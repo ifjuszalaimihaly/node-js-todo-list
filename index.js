@@ -1,20 +1,37 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'root',
-   password: 'root1234',
-   db: 'todo-list'
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root1234',
+    database: 'todolist'
 });
 
-app.get('/',function (request,response) {
+connection.connect(function (error) {
+    if (error) {
+        throw error;
+    }
+    console.log("Mysql connected");
+});
+
+app.get('/add-todo', function (request, response) {
+    var todo = {title: 'Post One', type: 'good'};
+    var sql = 'INSERT INTO todos SET ?';
+    var query = connection.query(sql, todo, function (error, result) {
+        if (error) throw error;
+        console.log(result);
+        response.send('Added a todo');
+    });
+});
+
+app.get('/', function (request, response) {
     response.send("app is run");
 });
 
-app.listen(8080,function () {
-    console.log('server is running at localhost://8080')
+app.listen(3000, function () {
+    console.log('server is running at localhost://3000')
 });
