@@ -2,6 +2,14 @@ var express = require('express');
 
 var app = express();
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+   host: 'localhost',
+   user: 'root',
+   password: 'root1234',
+   db: 'todo-list'
+});
 
 app.get('/',function (request,response) {
     response.send("app is run");
