@@ -32,7 +32,6 @@ app.post('/todos', function (request, response) {
         var sql = 'INSERT INTO todos SET ?';
         var query = connection.query(sql, todo, function (error, result) {
             if (error) throw error;
-            console.log(result);
             response.send('Added a todo');
         });
     }
@@ -42,18 +41,7 @@ app.get('/todos', function (request, response) {
     var sql = "SELECT * FROM todos";
     var querey = connection.query(sql, function (err, result, fields) {
         if (err) throw err;
-        //console.log(result);
     response.send(result);
-    });
-});
-
-app.delete('/todos/:id', function(request, response){
-    var id = request.params.id;
-    console.log(request.params);
-    connection.query('DELETE FROM todos WHERE id=?', [id], function(err, result) {
-        if (err) throw err;
-        console.log('usunieto: ' +result);
-        response.send('delete success');
     });
 });
 
