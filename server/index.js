@@ -47,16 +47,6 @@ app.get('/todos', function (request, response) {
     });
 });
 
-app.delete('/todos/:id', function(request, response){
-    var id = request.params.id;
-    console.log(request.params);
-    connection.query('DELETE FROM todos WHERE id=?', [id], function(err, result) {
-        if (err) throw err;
-        console.log('usunieto: ' +result);
-        response.send('delete success');
-    });
-});
-
 app.listen(3000, function () {
     console.log('server is running at localhost://3000')
 });
