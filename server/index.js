@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/todos', function (request, response) {
-    console.log(request.body);
     var title = request.body.title;
     var type = request.body.type;
     if(title != null && type != null){
@@ -32,7 +31,6 @@ app.post('/todos', function (request, response) {
         var sql = 'INSERT INTO todos SET ?';
         var query = connection.query(sql, todo, function (error, result) {
             if (error) throw error;
-            console.log(result);
             response.send('Added a todo');
         });
     }
@@ -46,6 +44,8 @@ app.get('/todos', function (request, response) {
     response.send(result);
     });
 });
+
+app.use(express.static('public'));
 
 app.listen(3000, function () {
     console.log('server is running at localhost://3000')
