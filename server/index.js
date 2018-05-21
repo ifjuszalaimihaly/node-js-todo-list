@@ -31,7 +31,7 @@ app.post('/todos', function (request, response) {
         var sql = 'INSERT INTO todos SET ?';
         var query = connection.query(sql, todo, function (error, result) {
             if (error) throw error;
-            response.send('Added a todo');
+            response.send(todo);
         });
     }
 });
@@ -40,7 +40,6 @@ app.get('/todos', function (request, response) {
     var sql = "SELECT * FROM todos";
     var querey = connection.query(sql, function (err, result, fields) {
         if (err) throw err;
-        //console.log(result);
     response.send(result);
     });
 });
