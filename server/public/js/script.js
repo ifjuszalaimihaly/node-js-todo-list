@@ -25,7 +25,7 @@ var showTodos = function(todos,type){
         }
     }
     if(empty){
-        parent.append('<p class="no-item">There is not item in this category</p>'); 
+        parent.append('<p class="no-item">There is no item in this category</p>'); 
     }
 }
 
@@ -40,14 +40,12 @@ var create = function(){
         dataType: "text",
         data: data,
         success: function(){
-            //getAllTodos();
         }
     })
 }
 
 $("button").on("click",function(){
     create();
-    //console.log("click");
 });
 
 getAllTodos();
