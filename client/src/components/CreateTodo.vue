@@ -83,11 +83,9 @@ export default {
           juicies: []
       }
   },
-    async mounted (){
+     async mounted (){
         this.todos = (await TodoService.index()).data
-        this.goods = this.todos.filter(todo => todo.type === 'good')
-        this.bads = this.todos.filter(todo => todo.type === 'bad')
-        this.juicies = this.todos.filter(todo => todo.type === 'juicy')
+        this.fitlterByType()
   },
     methods: {
         async create(){
@@ -101,10 +99,13 @@ export default {
       async getAllTodos() {
           this.todos = null;
           this.todos = (await TodoService.index()).data
+          this.fitlterByType()  
+      },
+      fitlterByType(){
           this.goods = this.todos.filter(todo => todo.type === 'good')
           this.bads = this.todos.filter(todo => todo.type === 'bad')
-          this.juicies = this.todos.filter(todo => todo.type === 'juicy')        
-      },
+          this.juicies = this.todos.filter(todo => todo.type === 'juicy')  
+      }
     },
 }
 </script>
