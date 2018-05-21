@@ -32,7 +32,7 @@
                 </div>
                 </div>
                 <div v-else>
-                    <p class="no-item">There is not item in this category</p>
+                    <p class="no-item">There is no item in this category</p>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div v-else>
-                <p class="no-item">There is not item in this category</p>
+                <p class="no-item">There is no item in this category</p>
             </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div v-else>
-                <p class="no-item">There is not item in this category</p>
+                <p class="no-item">There is no item in this category</p>
             </div>
             </div>
         </div>
@@ -105,9 +105,6 @@ export default {
           this.bads = this.todos.filter(todo => todo.type === 'bad')
           this.juicies = this.todos.filter(todo => todo.type === 'juicy')        
       },
-      remove(id){
-          this.todos.splice(id,1)
-      }
     },
 }
 </script>
