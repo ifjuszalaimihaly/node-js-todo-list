@@ -38,7 +38,7 @@ app.post('/todos', function (request, response) {
             collection.insert(todo);
             db.close();
         });
-        
+        response.send(todo);
     }
 });
 
