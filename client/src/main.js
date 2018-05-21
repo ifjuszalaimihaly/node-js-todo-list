@@ -4,11 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
-import VeeValidate from 'vee-validate'; 
 
 import store from '@/store/store'
 
-Vue.use(VeeValidate);
 Vue.config.productionTip = false
 sync(store,router)
 
